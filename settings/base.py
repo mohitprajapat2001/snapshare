@@ -1,10 +1,11 @@
 from pathlib import Path
 from os.path import join
 from utils.constants import Settings
-from dj_database_url import config
-from os import environ
+from os import getenv as env
+from dotenv import load_dotenv
 
-env = environ
+load_dotenv()
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 # -------------------------------------------------
@@ -15,7 +16,7 @@ APPEND_SLASH = True
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # -------------------------------------------------
-SECRET_KEY = env.get("SECRET_KEY")
+SECRET_KEY = env("SECRET_KEY")
 
 
 # Application definition
@@ -81,8 +82,16 @@ WSGI_APPLICATION = Settings.WSGI_APPLICATION
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 # -------------------------------------------------
-DATABASES = {"default": config(default=env.get("DATABASE_URL"))}
-
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": env("PGDATABASE"),
+        "USER": env("PGUSER"),
+        "PASSWORD": env("PGPASSWORD"),
+        "HOST": env("PGHOST"),
+        "PORT": env("PGPORT"),
+    }
+}
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 # -------------------------------------------------
