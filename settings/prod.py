@@ -6,11 +6,6 @@ INSTALLED_APPS += ["storages"]
 DEBUG = True
 ALLOWED_HOSTS = ["127.0.0.1", ".vercel.app"]
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-]
-CORS_ALLOW_CREDENTIALS = True
-
 # AWS S3 Configurations
 STORAGES = {
     "default": {
