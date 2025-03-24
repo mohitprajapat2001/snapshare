@@ -2,9 +2,9 @@ from pathlib import Path
 from os.path import join
 from utils.constants import Settings
 from dj_database_url import config
-from dotenv import dotenv_values
+from os import environ
 
-env = dotenv_values(".env")
+env = environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 # -------------------------------------------------
@@ -42,6 +42,7 @@ INSTALLED_APPS = THIRD_PARTY_APPS + PROJECT_APPS + DJANGO_APPS
 # -------------------------------------------------
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.locale.LocaleMiddleware",
     "django.middleware.common.CommonMiddleware",
