@@ -4,7 +4,7 @@ from settings.base import INSTALLED_APPS, env
 
 INSTALLED_APPS += ["storages"]
 DEBUG = True
-ALLOWED_HOSTS = ["127.0.0.1", ".vercel.app"]
+ALLOWED_HOSTS = ["127.0.0.1", ".vercel.app", "*"]
 
 # AWS S3 Configurations
 STORAGES = {
