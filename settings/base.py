@@ -1,7 +1,6 @@
 from pathlib import Path
 from os.path import join
 from utils.constants import Settings
-from dj_database_url import config
 from dotenv import dotenv_values
 
 env = dotenv_values(".env")
@@ -26,7 +25,7 @@ THIRD_PARTY_APPS = [
 ]
 
 
-PROJECT_APPS = []
+PROJECT_APPS = ["snap.apps.SnapConfig"]
 DJANGO_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
