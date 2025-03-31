@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static%}
+
+{% block title %}SnapShare{% endblock %}
+
+
+{% block content %}
+<div class="">
+  {% include 'includes/navbar.html' %}
+  {% block main-content %}
+  {% endblock %}
+  {% include 'includes/footer.html'%}
+</div>
+{% endblock %}

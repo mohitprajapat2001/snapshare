@@ -1,0 +1,59 @@
+<div class="navbar bg-base-300 shadow-sm">
+    <div class="navbar-start">
+        <a href="/" type="button" class="btn text-xl">
+            <span style=' font-family: "Bungee Inline", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+      '>Snapshare.</span>
+            <!-- <span style=' font-family: "Merienda", cursive;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;'>Snapshare.</span> -->
+        </a>
+    </div>
+    <div class="navbar-center">
+        <ul class="menu md:menu-horizontal rounded-box">
+            <li class="tooltip tooltip-bottom" data-tip="Click to go-to Upload section">
+                <a href="/#upload">
+                    <i class="fas fa-file-arrow-up"></i>
+                    Upload
+                </a>
+            </li>
+            <li class="tooltip tooltip-bottom" data-tip="Click to view features">
+                <a href="/#features">
+                    <i class="fa fa-file-code"></i>
+                    Features
+                </a>
+            </li>
+            <li class="tooltip tooltip-bottom" data-tip="Click to read docs">
+                <a href="/docs">
+                    <i class="fa fa-file-code"></i>
+                    Docs
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="navbar-end gap-x-2">
+        <select class="select w-32 capitalize" id="theme-select" tabindex="0">
+            {% include 'includes/theme-options.html' %}
+        </select>
+        <div class="dropdown dropdown-end">
+            <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
+                <div class="w-10 rounded-full">
+                    <img alt="Tailwind CSS Navbar component"
+                        src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                </div>
+            </div>
+            <ul tabindex="0" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                <li>
+                    <a class="justify-between">
+                        Profile
+                        <span class="badge">New</span>
+                    </a>
+                </li>
+                <li><a>Settings</a></li>
+                <li><a>Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
