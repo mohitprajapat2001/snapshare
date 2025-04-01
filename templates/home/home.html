@@ -1,7 +1,7 @@
 {% extends 'index.html' %}
 {% load static %}
 {% block main-content %}
-<form class="mt-8 space-y-3" method="POST" enctype="multipart/form-data">
+<form id="upload" method="POST" enctype="multipart/form-data">
   {% csrf_token %}
   <div class="grid grid-cols-1 space-y-2">
     <div class="flex items-center justify-center w-full">
@@ -33,4 +33,5 @@
     *.jpeg</label>
   <button type="submit" class="btn btn-primary w-full">Upload</button>
 </form>
+{% include 'sections/features.html' %}
 {% endblock %}

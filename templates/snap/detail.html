@@ -1,30 +1,47 @@
-{% extends 'index.html' %}
+{% extends 'base.html' %}
 {% load static %}
 
-{% block main-content %}
-<div class="mockup-browser border-gray-700 bg-base-300 border w-full">
-    <div class="border-b border-gray-800 p-3 justify-between flex items-centers">
-        <label class="input input-sm">
-            <i class="fab fa-searchengin"></i>
-            <input type="search" id="post-link" aria-disabled="true" readonly
-                value="http://{{request.META.HTTP_HOST}}{{snap.get_absolute_url}}" />
-        </label>
-        <div class="flex items-center justify-end gap-3">
-            <a target="_blank" href="{% url 'snap:view' snap.snap %}"
-                class="btn btn-sm btn-accent btn-soft tooltip tooltip-left" data-tip="View!">
-                <i class="fa fa-eye"></i>
-            </a>
-            <button class="btn btn-sm btn-primary btn-soft tooltip tooltip-left" data-tip="Share!">
-                <i class="fa fa-arrow-up-right-from-square"></i>
-            </button>
-            <button class="btn-soft btn btn-sm btn-secondary tooltip tooltip-left" data-tip="Copy now!"
-                id="copy-link-btn">
-                <i class="fa fa-link"></i>
-            </button>
+{% block content %}
+<div class="h-screen">
+    {% include 'includes/navbar.html' %}
+    <div class="flex flex-col gap-3 justify-center">
+        <div class="block md:hidden bg-base-100 px-5 py-3">Banner</div>
+        <div class="grid grid-cols-9 items-center bg-base-100 content-center">
+            <div class="col-span-2 hidden md:block relative h-100">
+                <img src="{% static 'img/banner.gif' %}" class="p-5 hidden" alt="" />
+            </div>
+            <div class="col-span-9 md:col-span-5 my-8">
+                <div class="mockup-browser border-gray-700 bg-base-300 border w-full">
+                    <div class="border-b border-gray-800 p-3 justify-between flex items-centers">
+                        <label class="input input-sm">
+                            <i class="fab fa-searchengin"></i>
+                            <input type="search" id="post-link" aria-disabled="true" readonly
+                                value="http://{{request.META.HTTP_HOST}}{{snap.get_absolute_url}}" />
+                        </label>
+                        <div class="flex items-center justify-end gap-3">
+                            <a target="_blank" href="{% url 'snap:view' snap.snap %}"
+                                class="btn btn-sm btn-accent btn-soft tooltip tooltip-left" data-tip="View!">
+                                <i class="fa fa-eye"></i>
+                            </a>
+                            <button class="btn btn-sm btn-primary btn-soft tooltip tooltip-left" data-tip="Share!">
+                                <i class="fa fa-arrow-up-right-from-square"></i>
+                            </button>
+                            <button class="btn-soft btn btn-sm btn-secondary tooltip tooltip-left" data-tip="Copy now!"
+                                id="copy-link-btn">
+                                <i class="fa fa-link"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="grid place-content-center border-t border-base-300 min-h-94 p-3">
+                        <img src="{{snap.image.url}}" alt="{{snap.name}}" class="w-full object-cover" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-span-2 hidden md:block relative h-100">
+                <img src="{% static 'img/banner.gif' %}" class="p-5 hidden" alt="" />
+            </div>
         </div>
     </div>
-    <div class="grid place-content-center border-t border-base-300 min-h-94 p-3">
-        <img src="{{snap.image.url}}" alt="{{snap.name}}" class="w-full object-cover" />
-    </div>
+    {% include 'includes/footer.html' with extraclass="fixed bottom-0 w-full" %}
 </div>
 {% endblock %}
