@@ -9,8 +9,13 @@ class HomeView(CreateView):
     template_name = "home/home.html"
     success_url = "/"
 
+
     def form_valid(self, form):
-        breakpoint()
+        snap = form.save(commit=False)
+        if user:= self.request.user:
+            snap.user = user
+        snap.save()
+        self.success_url = snap.get_detail_url()
         return super().form_valid(form)
 
 

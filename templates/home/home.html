@@ -1,59 +1,27 @@
-{% extends 'index.html' %} {% load static %} {% block main-content %}
-<div class="flex flex-col gap-3">
-  <div class="block md:hidden bg-base-100 px-5 py-3">Banner</div>
-  <div class="grid grid-cols-9 items-center bg-base-100 content-center">
-    <div class="col-span-2 hidden md:block h-screen justify-self-center">
-      <img
-        src="{% static 'img/banner.gif' %}"
-        class="p-10 w-9/12 h-9/12"
-        alt=""
-      />
-    </div>
-    <div
-      class="col-span-9 md:col-span-5 mt-8 h-screen overflow-y-auto"
-      style="scrollbar-width: none"
-    >
-      <form class="mt-8 space-y-3" method="POST">
-        {% csrf_token %}
-        <div class="grid grid-cols-1 space-y-2">
-          <div class="flex items-center justify-center w-full">
-            <label
-              class="flex flex-col rounded-lg border-4 border-dashed w-full h-94 p-10 group text-center gap-y-3 cursor-pointer"
-            >
-              <div
-                class="h-full w-full flex flex-col items-center justify-center"
-              >
-                <div class="flex flex-auto">
-                  <img
-                    class="h-54"
-                    src="{% static 'img/waiting.gif' %}"
-                    alt="freepik image"
-                  />
-                </div>
-                <p class="pointer-none text-lg font-bold">
-                  Waiting to upload image
-                  <span class="loading loading-dots loading-xs"></span>
-                </p>
-              </div>
-              {{form}}
-            </label>
+{% extends 'index.html' %}
+{% load static %}
+{% block main-content %}
+<form class="mt-8 space-y-3" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="grid grid-cols-1 space-y-2">
+    <div class="flex items-center justify-center w-full">
+      <label
+        class="flex flex-col rounded-lg border-4 border-dashed w-full h-94 p-10 group text-center gap-y-3 cursor-pointer">
+        <div class="h-full w-full flex flex-col items-center justify-center">
+          <div class="flex flex-auto">
+            <img class="h-54" src="{% static 'img/waiting.gif' %}" alt="freepik image" />
           </div>
+          <p class="pointer-none text-lg font-bold">
+            Waiting to upload image
+            <span class="loading loading-dots loading-xs"></span>
+          </p>
         </div>
-        <label class="fieldset-label italic text-sm text-warning"
-          >Max size 2MB, with required format *.jpg, *.png, *.jpeg</label
-        >
-        <button type="submit" class="btn btn-primary w-full">Upload</button>
-      </form>
-    </div>
-    <div
-      class="col-span-2 hidden md:block h-screen self-center justify-self-center"
-    >
-      <img
-        src="{% static 'img/banner.gif' %}"
-        class="p-10 w-9/12 h-9/12"
-        alt=""
-      />
+        {{form}}
+      </label>
     </div>
   </div>
-</div>
+  <label class="fieldset-label italic text-sm text-warning">Max size 2MB, with required format *.jpg, *.png,
+    *.jpeg</label>
+  <button type="submit" class="btn btn-primary w-full">Upload</button>
+</form>
 {% endblock %}

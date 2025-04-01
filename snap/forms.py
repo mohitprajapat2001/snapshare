@@ -16,3 +16,17 @@ class SnapForm(ModelForm):
                 }
             )
         }
+
+    def clean(self):
+        """
+        check for image size and accept format allow png,jpg,jpeg formats
+        """
+        cleaned_data= super().clean()
+        image = cleaned_data.get("image")
+        if image:
+            if image.size > 1024 * 1024 * 10:
+                self.add_error("image", "Image size should be less than 10MB")
+            if image.content_type not in ["image/png", "image/jpeg", "image/jpg"]:
+                self.add_error("image", "Image format should be png,jpg,jpeg")
+        return cleaned_data
+        
