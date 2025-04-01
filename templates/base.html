@@ -28,6 +28,7 @@
 
 <body data-theme="dark">
     {% block content %}{% endblock %}
+    {% include 'includes/messages.html' %}
 </body>
 {% block extrajs %}{% endblock %}
 <script src="{%  static 'js/theme.js'%}"></script>

@@ -6,7 +6,7 @@
   <div class="grid grid-cols-1 space-y-2">
     <div class="flex items-center justify-center w-full">
       <label
-        class="flex flex-col rounded-lg border-4 border-dashed w-full h-94 p-10 group text-center gap-y-3 cursor-pointer">
+        class="flex flex-col rounded-lg border-4 border-dashed w-full p-10 group text-center gap-y-3 cursor-pointer">
         <div class="h-full w-full flex flex-col items-center justify-center">
           <div class="flex flex-auto">
             <img class="h-54" src="{% static 'img/waiting.gif' %}" alt="freepik image" />
@@ -16,7 +16,16 @@
             <span class="loading loading-dots loading-xs"></span>
           </p>
         </div>
-        {{form}}
+        {% for field in form %}
+        <fieldset class="fieldset">
+          {{field}}
+          {% if field.errors %}
+          {% for error in field.errors %}
+          <label class="fieldset-label font-semibold text-error italic">{{error}}</label>
+          {% endfor %}
+          {% endif %}
+        </fieldset>
+        {% endfor %}
       </label>
     </div>
   </div>

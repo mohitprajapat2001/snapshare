@@ -19,10 +19,7 @@ SECRET_KEY = env.get("SECRET_KEY")
 
 # Application definition
 # -------------------------------------------------
-THIRD_PARTY_APPS = [
-    "rest_framework",
-    "django_extensions",
-]
+THIRD_PARTY_APPS = ["rest_framework", "django_extensions", "admin_auto_filters"]
 
 
 PROJECT_APPS = ["snap.apps.SnapConfig"]

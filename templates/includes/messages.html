@@ -1,0 +1,17 @@
+<div class="toast toast-top toast-end">
+    {% for message in messages %}
+    <div class="toast-alert alert alert-info gap-2 px-2 min-w-54 hover:cursor-pointer hover:shadow-xl">
+        <i class="fa fa-info-circle m-0 p-0"></i>
+        <span class="max-w-54 truncate">{{message}}</span>
+    </div>
+    {% endfor %}
+    <!-- Forms Non Field Errors -->
+    {% if forms.error %}
+    {% for error in forms.non_field_errors %}
+    <div class="toast-alert alert alert-error gap-2 px-2 min-w-54 hover:cursor-pointer hover:shadow-xl">
+        <i class="fa fa-exclamation-triangle m-0 p-0"></i>
+        <span class="max-w-54 truncate">{{error}}</span>
+    </div>
+    {% endfor %}
+    {% endif %}
+</div>

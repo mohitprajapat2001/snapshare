@@ -1,5 +1,4 @@
 $(document).ready(() => {
-
     $("#copy-link-btn").on("click", () => {
         const link = $("#post-link").val()
         // update data-tip attribute text
@@ -13,6 +12,9 @@ $(document).ready(() => {
             $("#copy-link-btn").text("Copy Link")
         }, 2000)
     })
-
-
+    if ($(".toast-alert")) {
+        setTimeout(() => {
+            $(".toast-alert").fadeOut("slow")
+        }, 5000)
+    }
 })
