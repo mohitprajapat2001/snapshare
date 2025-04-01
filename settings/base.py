@@ -4,7 +4,7 @@ from utils.constants import Settings
 from dotenv import dotenv_values
 
 env = dotenv_values(".env")
-
+AUTH_USER_MODEL = "accounts.User"
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 # -------------------------------------------------
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,7 +22,7 @@ SECRET_KEY = env.get("SECRET_KEY")
 THIRD_PARTY_APPS = ["rest_framework", "django_extensions", "admin_auto_filters"]
 
 
-PROJECT_APPS = ["snap.apps.SnapConfig"]
+PROJECT_APPS = ["snap.apps.SnapConfig", "accounts.apps.AccountsConfig"]
 DJANGO_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",

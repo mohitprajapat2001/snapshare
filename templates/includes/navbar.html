@@ -1,3 +1,4 @@
+{% load static %}
 <div class="navbar bg-base-300 shadow-sm sticky top-0 z-[99]">
     <div class="navbar-start">
         <a href="/" type="button" class="btn text-xl">
@@ -34,32 +35,31 @@
         </ul>
     </div>
     <div class="navbar-end gap-x-2">
-        <select class="select select-sm w-32 capitalize" id="theme-select" tabindex="0">
+        <select class="select w-32 capitalize" id="theme-select" tabindex="0">
             {% include 'includes/theme-options.html' %}
         </select>
         {% if request.user.is_authenticated %}
-        <a href="" class="btn btn-soft btn-warning btn-sm">
-            Login
-        </a>
-        {%else %}
         <div class="dropdown dropdown-end">
             <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
                 <div class="w-10 rounded-full">
-                    <img alt="Tailwind CSS Navbar component"
-                        src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                    <img alt="Tailwind CSS Navbar component" src="{% static 'img/profile.jpg' %}" />
                 </div>
             </div>
-            <ul tabindex="0" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+            <ul tabindex="0"
+                class="menu menu-sm dropdown-content bg-base-300 border border-gray-700 rounded-box z-1 mt-3 w-52 p-2 shadow">
                 <li>
-                    <a class="justify-between">
+                    <a href="{% url 'accounts:profile' %}">
                         Profile
-                        <span class="badge">New</span>
                     </a>
                 </li>
-                <li><a>Settings</a></li>
-                <li><a>Logout</a></li>
+                <li><a href="{% url 'snap:list' %}">Snaps</a></li>
+                <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
             </ul>
         </div>
+        {%else %}
+        <a href="{% url 'accounts:login' %}" class="btn btn-soft btn-warning btn-sm">
+            Login
+        </a>
         {%endif%}
     </div>
 </div>

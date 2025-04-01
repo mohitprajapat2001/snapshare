@@ -1,0 +1,46 @@
+{% extends 'base.html'%} {% block title %}Login{%endblock%} {% block content %}
+<div class="h-screen md:flex">
+    <div
+        class="relative overflow-hidden md:flex w-1/2 bg-gradient-to-tr from-blue-800 to-purple-700 i justify-around items-center hidden">
+        <div>
+            <h1 class="text-white font-bold text-4xl font-sans">Snapshare</h1>
+            <p class="text-white mt-1">Share your moments with the world</p>
+            <a href="{% url 'home' %}" type="submit" class="btn btn-secondary">
+                Home
+            </a>
+        </div>
+        <div class="absolute -bottom-32 -left-40 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
+        <div class="absolute -bottom-40 -left-20 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
+        <div class="absolute -top-40 -right-0 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
+        <div class="absolute -top-20 -right-20 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
+    </div>
+    <div class="flex md:w-1/2 justify-center py-10 items-center bg-base-100">
+        <form method="POST" class="bg-base-300 p-5 rounded-lg w-sm gap-3 flex flex-col">
+            {% csrf_token %}
+            <div>
+                <h1 class="font-bold text-2xl">Hello Again!</h1>
+                <p class="text-sm font-normal">Welcome Back</p>
+            </div>
+            <div>
+                {% for field in form %}
+                <fieldset class="fieldset">
+                    <legend class="fieldset-legend">{{field.label}}</legend>
+                    {{field}} {% if field.errors %} {% for error in field.errors %}
+                    <label class="fieldset-label font-semibold text-error italic">{{error}}</label>
+                    {% endfor %} {% endif %}
+                </fieldset>
+                {% endfor %}
+            </div>
+            <button type="submit" class="btn btn-soft btn-accent w-full">
+                Login
+            </button>
+            <span class="text-sm ml-2 cursor-pointer">New to Snapshare ?
+                <a href="{% url 'accounts:register' %}"
+                    class="italic text-secondary hover:text-warning transition duration-200">
+                    Register now
+                </a>
+            </span>
+        </form>
+    </div>
+</div>
+{% endblock %}

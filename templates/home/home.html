@@ -1,13 +1,13 @@
 {% extends 'index.html' %}
 {% load static %}
 {% block main-content %}
-<form id="upload" method="POST" enctype="multipart/form-data">
+<form id="upload" method="POST" class="space-y-3" enctype="multipart/form-data">
   {% csrf_token %}
-  <div class="grid grid-cols-1 space-y-2">
-    <div class="flex items-center justify-center w-full">
+  <div class="grid grid-cols-1 gap-3">
+    <div class="flex items-center justify-center w-full gap-3">
       <label
         class="flex flex-col rounded-lg border-4 border-dashed w-full p-10 group text-center gap-y-3 cursor-pointer">
-        <div class="h-full w-full flex flex-col items-center justify-center">
+        <div class="h-full w-full flex flex-col items-center justify-center space-y-3">
           <div class="flex flex-auto">
             <img class="h-54" src="{% static 'img/waiting.gif' %}" alt="freepik image" />
           </div>

@@ -1,0 +1,70 @@
+{% extends 'base.html'%}
+{%load static %}
+{% block title %}Profile{%endblock%}
+{% block content %}
+{% include 'includes/navbar.html' %}
+<div class="hero min-h-screen" style="background-image: url({% static 'img/darthvader_anakin.jpg' %});">
+    <div class="hero-overlay"></div>
+    <div class="hero-content text-neutral-content text-center">
+        <div
+            class="w-full bg-base-300 m-0 p-10 rounded-xl hover:shadow-xl shadow-sm duration-200 gap-3 w-full flex flex-col">
+            <div class="flex items-center justify-between">
+                <div class="col-span-5 md:col-span-3 capitalize text-2xl font-bold">
+                    {{request.user.username}}
+                </div>
+                <div class="flex justify-end items-center gap-3">
+                    <div class="">
+                        <button class="btn btn-soft btn-sm">
+                            Snaps:
+                            <span class="badge badge-sm badge-secondary">
+                                {{request.user.snaps.all.count}}
+                            </span>
+                        </button>
+                    </div>
+                    <div class="">
+                        <a class="btn btn-soft btn-sm">
+                            <span class="badge badge-sm badge-secondary">
+                                <i class="fa fa-pencil"></i>
+                            </span>
+                            Edit
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-zebra w-full">
+                <tbody>
+                    <tr class="hover:bg-base-100 hover:cursor-pointer">
+                        <th>First Name</th>
+                        <td>{% if request.user.first_name%}
+                            {{request.user.first_name}}
+                            {% else %}
+                            Not Set
+                            {% endif %}</td>
+                    </tr>
+                    <tr class="hover:bg-base-100 hover:cursor-pointer">
+                        <th>Last Name</th>
+                        <td>{% if request.user.last_name%}
+                            {{request.user.last_name}}
+                            {% else %}
+                            Not Set
+                            {% endif %}</td>
+                    </tr>
+                    <tr class="hover:bg-base-100 hover:cursor-pointer">
+                        <th>Email</th>
+                        <td>{% if request.user.email%}
+                            {{request.user.email}}
+                            {% else %}
+                            Not Set
+                            {% endif %}</td>
+                    </tr>
+                    <tr class="hover:bg-base-100 hover:cursor-pointer">
+                        <th>Date Joined</th>
+                        <td>{{request.user.date_joined}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% include 'includes/footer.html' %}
+{% endblock %}

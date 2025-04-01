@@ -37,7 +37,11 @@ def _upload_to(self, filename: str):
 
 class Snap(TimeStampedModel):
     user = ForeignKey(
-        settings.AUTH_USER_MODEL, on_delete=CASCADE, null=True, blank=True
+        settings.AUTH_USER_MODEL,
+        on_delete=CASCADE,
+        null=True,
+        blank=True,
+        related_name="snaps",
     )
     image = ImageField(upload_to=_upload_to)
     snap = CharField(max_length=12, default=_generate_random_unique_snap_name)

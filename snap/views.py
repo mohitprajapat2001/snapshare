@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.views import View, generic
 from snap.models import Snap
+from accounts.models import User
 
 
 class SnapView(View):
@@ -25,3 +26,10 @@ class SnapDetail(generic.DetailView):
 
 
 snap_detail = SnapDetail.as_view()
+
+
+class SnapList(generic.TemplateView):
+    template_name = "snap/list.html"
+
+
+snap_list = SnapList.as_view()
