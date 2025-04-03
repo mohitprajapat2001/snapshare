@@ -21,6 +21,9 @@ COPY requirements.txt /snapshare/
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Collect Static Files
+RUN python manage.py collectstatic --noinput && python manage.py migrate --noinput
+
 # Copy the Django Project
 COPY . /snapshare/
 
